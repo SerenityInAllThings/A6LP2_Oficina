@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="oficina.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="oficinaTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="oficina" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="oficinaContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="oficina.Cliente" />
+          <EntitySet Name="Carros" EntityType="oficina.Carro" />
+          <EntitySet Name="Faturas" EntityType="oficina.Fatura" />
+          <EntitySet Name="Pecas" EntityType="oficina.Peca" />
+          <AssociationSet Name="ClienteCarro" Association="oficina.ClienteCarro">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Carro" EntitySet="Carros" />
+          </AssociationSet>
+          <AssociationSet Name="CarroFatura" Association="oficina.CarroFatura">
+            <End Role="Carro" EntitySet="Carros" />
+            <End Role="Fatura" EntitySet="Faturas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Oid" />
+          </Key>
+          <Property Name="Oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="CPF" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Aniversario" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Carros" Relationship="oficina.ClienteCarro" FromRole="Cliente" ToRole="Carro" />
+        </EntityType>
+        <EntityType Name="Carro">
+          <Key>
+            <PropertyRef Name="Oid" />
+          </Key>
+          <Property Name="Oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Placa" Type="String" Nullable="false" />
+          <Property Name="Cor" Type="String" Nullable="false" />
+          <Property Name="Modelo" Type="String" Nullable="false" />
+          <Property Name="Marca" Type="String" Nullable="false" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="oficina.ClienteCarro" FromRole="Carro" ToRole="Cliente" />
+          <NavigationProperty Name="Faturas" Relationship="oficina.CarroFatura" FromRole="Carro" ToRole="Fatura" />
+        </EntityType>
+        <EntityType Name="Fatura">
+          <Key>
+            <PropertyRef Name="Oid" />
+          </Key>
+          <Property Name="Oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValorRecebido" Type="Decimal" Nullable="false" />
+          <Property Name="TipoPagamento" Type="String" Nullable="false" />
+          <NavigationProperty Name="Carro" Relationship="oficina.CarroFatura" FromRole="Fatura" ToRole="Carro" />
+        </EntityType>
+        <EntityType Name="Peca">
+          <Key>
+            <PropertyRef Name="Oid" />
+          </Key>
+          <Property Name="Oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ClienteCarro">
+          <End Type="oficina.Cliente" Role="Cliente" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="oficina.Carro" Role="Carro" Multiplicity="*" />
+        </Association>
+        <Association Name="CarroFatura">
+          <End Type="oficina.Carro" Role="Carro" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="oficina.Fatura" Role="Fatura" Multiplicity="*" >
+          </End>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="oficina" />
+        <Alias Key="Target" Value="oficina.Store" />
+        <EntityContainerMapping CdmEntityContainer="oficinaContainer" StorageEntityContainer="oficinaTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
