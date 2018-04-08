@@ -15,7 +15,9 @@ namespace Oficina.Models
     public partial class Peca
     {
         public int Oid { get; set; }
-        public string Nome { get; set; }
-        public int Quantidade { get; set; }
+        public string Codigo { get; set; }
+    
+        public virtual TipoPeca TipoPeca { get; set; }
+        public virtual Atendimento Atendimento { get; set; }
     }
 }

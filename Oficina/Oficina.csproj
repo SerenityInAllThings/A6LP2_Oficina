@@ -161,14 +161,53 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AtendimentoController.cs" />
+    <Compile Include="Controllers\CarroController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FaturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PecaController.cs" />
+    <Compile Include="Controllers\TipoPecaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\oficina.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="Models\Atendimento.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Carro.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Cliente.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Fatura.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\oficina.Context.cs">
+      <DependentUpon>oficina.Context.tt</DependentUpon>
+      <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\oficina.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\oficina.Designer.cs">
       <DependentUpon>oficina.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\Peca.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\TipoPeca.cs">
+      <DependentUpon>oficina.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -180,15 +219,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\oficina.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>oficina.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Content Include="Models\oficina.Context.tt">
+      <DependentUpon>oficina.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>oficina.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\oficina.edmx.diagram">
       <DependentUpon>oficina.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\oficina.edmx.sql" />
+    <Content Include="Models\oficina.tt">
+      <DependentUpon>oficina.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>oficina.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -226,6 +272,36 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Carro\Create.cshtml" />
+    <Content Include="Views\Carro\Delete.cshtml" />
+    <Content Include="Views\Carro\Details.cshtml" />
+    <Content Include="Views\Carro\Edit.cshtml" />
+    <Content Include="Views\Carro\Index.cshtml" />
+    <Content Include="Views\Atendimento\Create.cshtml" />
+    <Content Include="Views\Atendimento\Delete.cshtml" />
+    <Content Include="Views\Atendimento\Details.cshtml" />
+    <Content Include="Views\Atendimento\Edit.cshtml" />
+    <Content Include="Views\Atendimento\Index.cshtml" />
+    <Content Include="Views\Fatura\Create.cshtml" />
+    <Content Include="Views\Fatura\Delete.cshtml" />
+    <Content Include="Views\Fatura\Details.cshtml" />
+    <Content Include="Views\Fatura\Edit.cshtml" />
+    <Content Include="Views\Fatura\Index.cshtml" />
+    <Content Include="Views\Peca\Create.cshtml" />
+    <Content Include="Views\Peca\Delete.cshtml" />
+    <Content Include="Views\Peca\Details.cshtml" />
+    <Content Include="Views\Peca\Edit.cshtml" />
+    <Content Include="Views\Peca\Index.cshtml" />
+    <Content Include="Views\TipoPeca\Create.cshtml" />
+    <Content Include="Views\TipoPeca\Delete.cshtml" />
+    <Content Include="Views\TipoPeca\Details.cshtml" />
+    <Content Include="Views\TipoPeca\Edit.cshtml" />
+    <Content Include="Views\TipoPeca\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -239,6 +315,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\oficina.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>oficina.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

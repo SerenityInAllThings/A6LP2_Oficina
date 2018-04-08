@@ -12,21 +12,20 @@ namespace Oficina.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Carro
+    public partial class Atendimento
     {
-        public Carro()
+        public Atendimento()
         {
-            this.Atendimentos = new HashSet<Atendimento>();
+            this.PecasUtilizadas = new HashSet<Peca>();
         }
     
         public int Oid { get; set; }
-        public string Placa { get; set; }
-        public string Cor { get; set; }
-        public string Modelo { get; set; }
-        public string Marca { get; set; }
-        public int Ano { get; set; }
+        public string Codigo { get; set; }
+        public string DataInicio { get; set; }
+        public string DataFim { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
-        public virtual ICollection<Atendimento> Atendimentos { get; set; }
+        public virtual Carro Carro { get; set; }
+        public virtual Fatura Fatura { get; set; }
+        public virtual ICollection<Peca> PecasUtilizadas { get; set; }
     }
 }

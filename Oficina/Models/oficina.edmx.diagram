@@ -5,12 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8754e92fc0da4113b3e3b6e61b76065d" Name="Diagram1" >
-        <EntityTypeShape EntityType="oficina.Cliente" Width="1.5" PointX="4.125" PointY="4.75" />
-        <EntityTypeShape EntityType="oficina.Carro" Width="1.5" PointX="4.375" PointY="1.5" />
-        <EntityTypeShape EntityType="oficina.Fatura" Width="1.5" PointX="7.5" PointY="1.5" />
-        <EntityTypeShape EntityType="oficina.Peca" Width="1.5" PointX="2" PointY="1.75" />
+        <EntityTypeShape EntityType="oficina.Cliente" Width="1.5" PointX="6.375" PointY="4.5" />
+        <EntityTypeShape EntityType="oficina.Carro" Width="1.5" PointX="6.375" PointY="1.5" />
+        <EntityTypeShape EntityType="oficina.Fatura" Width="1.5" PointX="2.25" PointY="1.5" />
+        <EntityTypeShape EntityType="oficina.Peca" Width="1.5" PointX="4.375" PointY="4.5" />
         <AssociationConnector Association="oficina.ClienteCarro" />
-        <AssociationConnector Association="oficina.CarroFatura" />
+        <EntityTypeShape EntityType="oficina.Atendimento" Width="1.5" PointX="4.375" PointY="1.5" />
+        <AssociationConnector Association="oficina.CarroAtendimento" />
+        <AssociationConnector Association="oficina.AtendimentoFatura" />
+        <EntityTypeShape EntityType="oficina.TipoPeca" Width="1.5" PointX="2.125" PointY="4.5" />
+        <AssociationConnector Association="oficina.TipoPeca_Peca" />
+        <AssociationConnector Association="oficina.AtendimentoPeca" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

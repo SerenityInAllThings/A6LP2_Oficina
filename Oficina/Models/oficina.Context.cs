@@ -29,5 +29,7 @@ namespace Oficina.Models
         public virtual DbSet<Carro> Carros { get; set; }
         public virtual DbSet<Fatura> Faturas { get; set; }
         public virtual DbSet<Peca> Pecas { get; set; }
+        public virtual DbSet<Atendimento> Atendimentoes { get; set; }
+        public virtual DbSet<TipoPeca> TipoPecas { get; set; }
     }
 }

@@ -18,6 +18,6 @@ namespace Oficina.Models
         public decimal ValorRecebido { get; set; }
         public string TipoPagamento { get; set; }
     
-        public virtual Carro Carro { get; set; }
+        public virtual Atendimento Atendimento { get; set; }
     }
 }
