@@ -6,111 +6,120 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Oficina.Models;
+using Oficina_codeFirst.Models;
 
-namespace Oficina.Controllers
+namespace Oficina_codeFirst.Controllers
 {
-    public class FaturaController : Controller
+    public class AtendimentoController : Controller
     {
-        private oficinaContainer db = new oficinaContainer();
+        private OficinaContext db = new OficinaContext();
 
-        // GET: /Fatura/
+        // GET: /Atendimento/
         public ActionResult Index()
         {
-            return View(db.Faturas.ToList());
+            var atendimentos = db.Atendimentos.Include(a => a.Carro).Include(a => a.Fatura);
+            return View(atendimentos.ToList());
         }
 
-        // GET: /Fatura/Details/5
+        // GET: /Atendimento/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fatura fatura = db.Faturas.Find(id);
-            if (fatura == null)
+            Atendimento atendimento = db.Atendimentos.Find(id);
+            if (atendimento == null)
             {
                 return HttpNotFound();
             }
-            return View(fatura);
+            return View(atendimento);
         }
 
-        // GET: /Fatura/Create
+        // GET: /Atendimento/Create
         public ActionResult Create()
         {
+            ViewBag.CarroOid = new SelectList(db.Carros, "Oid", "Placa");
+            ViewBag.Oid = new SelectList(db.Fatura, "Oid", "TipoPagamento");
             return View();
         }
 
-        // POST: /Fatura/Create
+        // POST: /Atendimento/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Oid,ValorRecebido,TipoPagamento")] Fatura fatura)
+        public ActionResult Create([Bind(Include="Oid,Codigo,DataInicio,DataFim,CarroOid")] Atendimento atendimento)
         {
             if (ModelState.IsValid)
             {
-                db.Faturas.Add(fatura);
+                db.Atendimentos.Add(atendimento);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(fatura);
+            ViewBag.CarroOid = new SelectList(db.Carros, "Oid", "Placa", atendimento.CarroOid);
+            ViewBag.Oid = new SelectList(db.Fatura, "Oid", "TipoPagamento", atendimento.Oid);
+            return View(atendimento);
         }
 
-        // GET: /Fatura/Edit/5
+        // GET: /Atendimento/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fatura fatura = db.Faturas.Find(id);
-            if (fatura == null)
+            Atendimento atendimento = db.Atendimentos.Find(id);
+            if (atendimento == null)
             {
                 return HttpNotFound();
             }
-            return View(fatura);
+            ViewBag.CarroOid = new SelectList(db.Carros, "Oid", "Placa", atendimento.CarroOid);
+            ViewBag.Oid = new SelectList(db.Fatura, "Oid", "TipoPagamento", atendimento.Oid);
+            return View(atendimento);
         }
 
-        // POST: /Fatura/Edit/5
+        // POST: /Atendimento/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Oid,ValorRecebido,TipoPagamento")] Fatura fatura)
+        public ActionResult Edit([Bind(Include="Oid,Codigo,DataInicio,DataFim,CarroOid")] Atendimento atendimento)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(fatura).State = EntityState.Modified;
+                db.Entry(atendimento).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(fatura);
+            ViewBag.CarroOid = new SelectList(db.Carros, "Oid", "Placa", atendimento.CarroOid);
+            ViewBag.Oid = new SelectList(db.Fatura, "Oid", "TipoPagamento", atendimento.Oid);
+            return View(atendimento);
         }
 
-        // GET: /Fatura/Delete/5
+        // GET: /Atendimento/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fatura fatura = db.Faturas.Find(id);
-            if (fatura == null)
+            Atendimento atendimento = db.Atendimentos.Find(id);
+            if (atendimento == null)
             {
                 return HttpNotFound();
             }
-            return View(fatura);
+            return View(atendimento);
         }
 
-        // POST: /Fatura/Delete/5
+        // POST: /Atendimento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fatura fatura = db.Faturas.Find(id);
-            db.Faturas.Remove(fatura);
+            Atendimento atendimento = db.Atendimentos.Find(id);
+            db.Atendimentos.Remove(atendimento);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
