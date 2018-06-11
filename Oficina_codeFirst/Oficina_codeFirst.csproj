@@ -161,7 +161,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AtendimentoController.cs" />
+    <Compile Include="Controllers\CarroController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FaturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PecaController.cs" />
+    <Compile Include="Controllers\TipoPecaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +236,31 @@
     <Content Include="Views\Atendimento\Details.cshtml" />
     <Content Include="Views\Atendimento\Edit.cshtml" />
     <Content Include="Views\Atendimento\Index.cshtml" />
+    <Content Include="Views\Carro\Create.cshtml" />
+    <Content Include="Views\Carro\Delete.cshtml" />
+    <Content Include="Views\Carro\Details.cshtml" />
+    <Content Include="Views\Carro\Edit.cshtml" />
+    <Content Include="Views\Carro\Index.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Peca\Create.cshtml" />
+    <Content Include="Views\Peca\Delete.cshtml" />
+    <Content Include="Views\Peca\Details.cshtml" />
+    <Content Include="Views\Peca\Edit.cshtml" />
+    <Content Include="Views\Peca\Index.cshtml" />
+    <Content Include="Views\Fatura\Create.cshtml" />
+    <Content Include="Views\Fatura\Delete.cshtml" />
+    <Content Include="Views\Fatura\Details.cshtml" />
+    <Content Include="Views\Fatura\Edit.cshtml" />
+    <Content Include="Views\Fatura\Index.cshtml" />
+    <Content Include="Views\TipoPeca\Create.cshtml" />
+    <Content Include="Views\TipoPeca\Delete.cshtml" />
+    <Content Include="Views\TipoPeca\Details.cshtml" />
+    <Content Include="Views\TipoPeca\Edit.cshtml" />
+    <Content Include="Views\TipoPeca\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

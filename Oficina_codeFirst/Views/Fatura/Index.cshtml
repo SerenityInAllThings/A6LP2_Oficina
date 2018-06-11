@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Oficina_codeFirst.Models.Fatura>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Atendimento.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorRecebido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPagamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parcelas)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Atendimento.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorRecebido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPagamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parcelas)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Oid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Oid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Oid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
