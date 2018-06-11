@@ -14,6 +14,7 @@ namespace Oficina_codeFirst.Models
         public int Oid { get; set; }
         public decimal ValorRecebido { get; set; }
         public string TipoPagamento { get; set; }
+        public int parcelas { get; set; }
         public Atendimento Atendimento { get; set; }
     }
 }
