@@ -4,6 +4,34 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet"/>
+    @section Scripts {
+        @Scripts.Render("~/Scripts/jquery-3.3.1.min.js")
+
+        <script type="text/javascript">
+            const apiUrl = "http://localhost:55330/";
+
+            $(document).ready(() => {
+                $("#form-login").submit(e => {
+                    console.log('oi')
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: "POST",
+                        url: apiUrl + "Autenticacao/AutenticarUsuario",
+                        dataType: 'json',
+                        async: false,
+                        data: {
+                            login: $("input[name$=txtLogin]").val(),
+                            senha: $("input[name$=txtSenha]").val(),
+                        },
+                        success: (retorno) => {
+                            console.log(retorno);
+                        },
+                    });
+                });
+            });
+        </script>
+    }
     <title>Login</title>
 </head>
 <body>
@@ -16,7 +44,7 @@
         <div class="container">
             <div class="container">
                 <div>
-                    <form id="form-login" name="form-login" method="get" action="javascript:function()">
+                    <form id="form-login" name="form-login">
                         <p>
                             <label for="txtLogin">Login</label>&nbsp;
                             <input type="text" id="txtLogin" name="txtLogin" />
@@ -25,11 +53,15 @@
                             <label for="txtSenha">Senha</label>&nbsp;
                             <input type="password" id="txtSenha" name="txtSenha" />
                         </p>
-                        <p><a id="botao-entrar" class="btn btn-success">Entrar</a></p>
+                        <p>
+                            <input class="btn btn-success" id="form-login" type="submit" value="Entrar" />
+                        </p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+    </script>
 </body>
 </html>
