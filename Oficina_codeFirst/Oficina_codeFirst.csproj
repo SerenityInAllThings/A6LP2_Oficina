@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -174,6 +175,10 @@
     <Compile Include="Migrations\201806111358599_CriacaoInicial.Designer.cs">
       <DependentUpon>201806111358599_CriacaoInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806141819351_AdicaoUsuario.cs" />
+    <Compile Include="Migrations\201806141819351_AdicaoUsuario.Designer.cs">
+      <DependentUpon>201806141819351_AdicaoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Atendimento.cs" />
     <Compile Include="Models\Carro.cs" />
@@ -182,6 +187,7 @@
     <Compile Include="Models\OficinaContext.cs" />
     <Compile Include="Models\Peca.cs" />
     <Compile Include="Models\TipoPeca.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806111358599_CriacaoInicial.resx">
       <DependentUpon>201806111358599_CriacaoInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141819351_AdicaoUsuario.resx">
+      <DependentUpon>201806141819351_AdicaoUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
