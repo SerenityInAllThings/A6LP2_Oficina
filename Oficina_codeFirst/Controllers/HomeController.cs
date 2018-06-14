@@ -26,5 +26,11 @@ namespace Oficina_codeFirst.Controllers
 
             return View();
         }
+
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Autenticação";
+            return View();
+        }
     }
 }
