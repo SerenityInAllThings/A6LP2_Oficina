@@ -17,5 +17,7 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Log in", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li><a id="botao-LogOff"> Log Off </a></li>
+        <p class="label">Identidade: @Oficina_codeFirst.Respositories.GestaoUsuarios.GetNomeUsuarioLogado()</p>
     </ul>
 }

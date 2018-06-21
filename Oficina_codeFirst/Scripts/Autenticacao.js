@@ -17,7 +17,6 @@ $(document).ready(() => {
                 senha: $("input[name$=txtSenha]").val(),
             },
             success: (retorno) => {
-                console.log(retorno)
                 if (retorno.OK) {
                     $('#status').html(retorno.Mensagem);
                     setTimeout(redirecionarParaHome, 2000);
@@ -30,6 +29,21 @@ $(document).ready(() => {
             error: (retorno) => {
                 $('#status').html(retorno.Mensagem);
                 $('#status').show();
+            },
+        });
+    });
+
+    $("#botao-LogOff").click(() => {
+        $.ajax({
+            url: apiUrl + "Autenticacao/DesautenticarUsuario",
+            dataType: 'json',
+            type: "POST",
+            async: true,
+            success: (retorno) => {
+                location.reload();
+            },
+            error: (retorno) => {
+                alert('Erro ao realizar log off!');
             },
         });
     });

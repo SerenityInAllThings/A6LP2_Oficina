@@ -29,5 +29,18 @@ namespace Oficina_codeFirst.Respositories
                 return false;
             }
         }
+
+        public static string GetNomeUsuarioLogado()
+        {
+            var cookieUsuario = GestaoCookie.GetCookieUsuario();
+            if (cookieUsuario == null)
+                return "Usuário desconhecido";
+            var idUsuario = Convert.ToInt32(cookieUsuario.Values[GestaoCookie.chaveCookieUsuario_ID]);
+            var db = new OficinaContext();
+            var usuario = db.Usuario.FirstOrDefault(u => u.Oid == idUsuario);
+            if (usuario == null)
+                return "Usuário estranho";
+            return usuario.Login;
+        }
     }
 }
