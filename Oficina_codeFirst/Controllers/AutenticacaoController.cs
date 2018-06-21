@@ -7,7 +7,7 @@ using Oficina_codeFirst.Respositories;
 
 namespace Oficina_codeFirst.Controllers
 {
-    public class AutenticacaoController : Controller
+    public class AutenticacaoController : BaseController
     {
         public JsonResult DesautenticarUsuario()
         {

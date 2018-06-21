@@ -42,5 +42,16 @@ namespace Oficina_codeFirst.Respositories
                 return "Usuário estranho";
             return usuario.Login;
         }
+    
+        public static Usuario RecuperarUsuarioLogado()
+        {
+            var cookieUsuario = GestaoCookie.GetCookieUsuario();
+            if (cookieUsuario == null)
+                return null;
+            var idUsuario = Convert.ToInt32(cookieUsuario[GestaoCookie.chaveCookieUsuario_ID]);
+            var db = new OficinaContext();
+            var usuario = db.Usuario.FirstOrDefault(u => u.Oid == idUsuario);
+            return usuario;
+        }
     }
 }

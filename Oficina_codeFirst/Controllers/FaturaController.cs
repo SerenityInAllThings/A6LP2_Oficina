@@ -10,7 +10,7 @@ using Oficina_codeFirst.Models;
 
 namespace Oficina_codeFirst.Controllers
 {
-    public class FaturaController : Controller
+    public class FaturaController : BaseController
     {
         private OficinaContext db = new OficinaContext();
 

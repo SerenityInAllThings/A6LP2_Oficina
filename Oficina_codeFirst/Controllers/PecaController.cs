@@ -10,7 +10,7 @@ using Oficina_codeFirst.Models;
 
 namespace Oficina_codeFirst.Controllers
 {
-    public class PecaController : Controller
+    public class PecaController : BaseController
     {
         private OficinaContext db = new OficinaContext();
 
