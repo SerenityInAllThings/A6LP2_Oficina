@@ -53,6 +53,8 @@ namespace Oficina_codeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
+                atendimento.Codigo = Guid.NewGuid().ToString().Substring(0, 8);
+
                 db.Atendimentos.Add(atendimento);
                 db.SaveChanges();
                 return RedirectToAction("Index");

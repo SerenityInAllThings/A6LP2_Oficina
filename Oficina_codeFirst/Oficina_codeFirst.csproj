@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201806141819351_AdicaoUsuario.Designer.cs">
       <DependentUpon>201806141819351_AdicaoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806211205219_alteracaoAtendimento.cs" />
+    <Compile Include="Migrations\201806211205219_alteracaoAtendimento.Designer.cs">
+      <DependentUpon>201806211205219_alteracaoAtendimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Atendimento.cs" />
     <Compile Include="Models\Carro.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806141819351_AdicaoUsuario.resx">
       <DependentUpon>201806141819351_AdicaoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211205219_alteracaoAtendimento.resx">
+      <DependentUpon>201806211205219_alteracaoAtendimento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

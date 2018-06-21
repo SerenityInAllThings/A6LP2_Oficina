@@ -12,11 +12,10 @@ namespace Oficina_codeFirst.Models
     {
         [Key]
         public int Oid { get; set; }
-        [Required]
         public string Codigo { get; set; }
         [Required]
         public DateTime DataInicio { get; set; }
-        public DateTime DataFim { get; set; }
+        public DateTime? DataFim { get; set; }
         public int CarroOid { get; set; }
         [ForeignKey("CarroOid")]
         public Carro Carro { get; set; }
