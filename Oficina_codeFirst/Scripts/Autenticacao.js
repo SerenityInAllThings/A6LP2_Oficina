@@ -22,7 +22,7 @@ $(document).ready(() => {
                 if (retorno.OK) {
                     console.log('oi2')
                     $('#status').html(retorno.Mensagem);
-                    setTimeout(window.location.href = "/Home", 2000);
+                    setTimeout(redirecionarParaHome, 2000);
                     $('#status').show();
                 } else {
                     console.log('oi3')
@@ -37,3 +37,7 @@ $(document).ready(() => {
         });
     });
 });
+
+function redirecionarParaHome() {
+    window.location.href = "/Home";
+}
