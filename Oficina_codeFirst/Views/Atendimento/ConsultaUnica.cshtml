@@ -1,0 +1,61 @@
+﻿@model Oficina_codeFirst.Models.Atendimento
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConsultaUnica</title>
+</head>
+<body>
+    <div>
+        <h4>Atendimento</h4>
+    	<hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Carro.Placa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Carro.Placa)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fatura.TipoPagamento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fatura.TipoPagamento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Codigo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataInicio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataFim)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Oid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

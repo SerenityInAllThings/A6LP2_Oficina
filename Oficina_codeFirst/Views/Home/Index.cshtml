@@ -2,10 +2,23 @@
     ViewBag.Title = "Home Page";
 }
 
+<script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/ConsultaClientes.js")"></script>
+
 <div class="jumbotron">
     <h1>Oficina Online</h1>
     <p class="lead">Bem-vindo a aplicação Oficina Online. Desenvolvida como demonstração de conceitos.</p>
 </div>
 
 <div class="row">
+    <div class="col-md-4">
+        <h2>Clientes:</h2>
+        <p>
+            Nesta seção temos as ações disponíveis para clientes:
+        </p>
+        <form id="consultaAtendimentoForm">
+            <input type="text" id="codigoAtendimento" name="codigoAtendimento" />&nbsp;
+        </form>
+        <p><a class="btn btn-default" id="consultarAtendimentoSubmit" onclick="redirecionar('@Url.Action("ConsultaUnica", "Atendimento")')"> Consultar Atendimento &raquo;</a></p>
+    </div>
 </div>

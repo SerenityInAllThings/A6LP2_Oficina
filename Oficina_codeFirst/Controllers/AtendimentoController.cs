@@ -28,7 +28,7 @@ namespace Oficina_codeFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Atendimento atendimento = db.Atendimentos.Find(id);
+            Atendimento atendimento = db.Atendimentos.Include(a => a.Fatura).Include(a => a.Carro).FirstOrDefault(a => a.Oid == id);
             if (atendimento == null)
             {
                 return HttpNotFound();
@@ -112,6 +112,13 @@ namespace Oficina_codeFirst.Controllers
             {
                 return HttpNotFound();
             }
+            return View(atendimento);
+        }
+
+        [AllowAnonymous]
+        public ActionResult ConsultaUnica(string codigoAtendimento)
+        {
+            var atendimento = db.Atendimentos.Include(a => a.Fatura).Include(a => a.Carro).FirstOrDefault(a => a.Codigo == codigoAtendimento);
             return View(atendimento);
         }
 

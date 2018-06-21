@@ -14,7 +14,7 @@ namespace Oficina_codeFirst.Filters
             var controller = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
             var action = filterContext.ActionDescriptor.ActionName;
 
-            if (controller != "Home" && controller != "Autenticacao")
+            if (controller != "Home" && controller != "Autenticacao" && action != "ConsultaUnica")
             {
                 if (GestaoUsuarios.RecuperarUsuarioLogado() == null)
                 {
