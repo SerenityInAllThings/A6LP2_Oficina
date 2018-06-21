@@ -18,14 +18,11 @@ $(document).ready(() => {
             },
             success: (retorno) => {
                 console.log(retorno)
-                console.log('oi')
                 if (retorno.OK) {
-                    console.log('oi2')
                     $('#status').html(retorno.Mensagem);
                     setTimeout(redirecionarParaHome, 2000);
                     $('#status').show();
                 } else {
-                    console.log('oi3')
                     $('#status').html(retorno.Mensagem);
                     $('#status').show();
                 }
