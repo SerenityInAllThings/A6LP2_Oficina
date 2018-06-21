@@ -9,6 +9,14 @@ namespace Oficina_codeFirst.Controllers
 {
     public class AutenticacaoController : Controller
     {
+        public JsonResult DesautenticarUsuario()
+        {
+            if (GestaoCookie.ApagarCookieAutenticacao())
+                return Json(new { OK = true }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { OK = false }, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult AutenticarUsuario(string login, string senha)
         {
             if (GestaoUsuarios.Autenticar(login, senha))
